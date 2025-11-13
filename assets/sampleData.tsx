@@ -1,12 +1,22 @@
 import { faker } from "@faker-js/faker";
 
 // dummy 데이터의 랜덤 시드 개수
-faker.seed(12);
+faker.seed(20);
 
-interface IDummyData {}
+// Type
+export interface ISampleData {
+  id: string;
+  author: {
+    name: string;
+    profileUrl: string;
+  };
+  title: string;
+  description: string;
+  image: string;
+}
 
 // 20개짜리 dummy(faker) Data 생성하는 방법
-export const sampleData = [...Array(20).keys()].map(() => {
+export const sampleData: ISampleData[] = [...Array(20).keys()].map(() => {
   // 실제 dummy 데이터의 key-value 값을 채워넣는다.
   return {
     id: faker.string.uuid(),
@@ -14,12 +24,12 @@ export const sampleData = [...Array(20).keys()].map(() => {
       name: faker.person.fullName(),
       profileUrl: faker.image.avatarGitHub(),
     },
-    imgUrl: faker.image.urlPicsumPhotos({ width: 300, height: 300 * 1.6 }),
-
     title: faker.music.songName(),
-    description: faker.lorem.sentence({
-      min: 1,
-      max: 3,
+    description: faker.lorem.sentence({ min: 1, max: 3 }),
+    image: faker.image.urlPicsumPhotos({
+      width: 300,
+      height: 300 * 1.6,
+      blur: 0,
     }),
   };
 });

@@ -22,9 +22,8 @@ export default function LoadingScreen() {
 
   return (
     <Container theme={theme}>
-      <ActivityIndicator size="large">
-        <Title theme={theme}>Loading...</Title>
-      </ActivityIndicator>
+      <ActivityIndicator size="large" />
+      <Title theme={theme}>Loading...</Title>
     </Container>
   );
 }

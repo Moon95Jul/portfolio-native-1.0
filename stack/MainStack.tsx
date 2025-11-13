@@ -13,7 +13,11 @@ const MainStack = () => {
         component={FirstScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Tabs" component={BottomTab} />
+      <Stack.Screen
+        name="Tabs"
+        component={BottomTab}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

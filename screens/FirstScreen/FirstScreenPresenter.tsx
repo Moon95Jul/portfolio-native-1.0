@@ -24,6 +24,7 @@ import { styled } from "styled-components";
 import LoadingScreen from "../Loading/LoadingScreen";
 import { opacity } from "react-native-reanimated/lib/typescript/Colors";
 import { Stagger } from "@animatereactnative/stagger";
+import { useNavigation } from "@react-navigation/native";
 
 // DesignSystem..
 const { width: WIDTH } = Dimensions.get("screen");
@@ -70,6 +71,10 @@ type Props = {
 const FirstScreenPresenter = ({ images, loading }: Props) => {
   // 애니메이션 Component에서 공유되는 변환 값
   const offset = useSharedValue(0);
+
+  const navi = useNavigation();
+  const goToScreen = () => navi.navigate("Tabs", { screen: "Home" });
+
   // 현재 포커싱 된 Marquee 애니메이션 이미지의 Index
   const [activeIndex, setActiveIndex] = useState(0);
   // 화면 상에서 가운데에 위치한 이미지의 Index 번호 가져오기
@@ -117,7 +122,7 @@ const FirstScreenPresenter = ({ images, loading }: Props) => {
           entering={FadeIn.duration(1000)}
           // 컴포넌트 파괴 시, or 새로운 데이터 입력 시
           exiting={FadeOut.duration(1000)}
-          source={{ uri: images[activeIndex] }}
+          source={{ uri: images && images[activeIndex] }}
         />
       </BackGroundView>
       {/* 자동 순환 스크롤 애니메이션 영역 */}
@@ -155,7 +160,7 @@ const FirstScreenPresenter = ({ images, loading }: Props) => {
         <StyleText size={13}>
           Welcome to my project. Glad to meet you!
         </StyleText>
-        <SigninBtn>
+        <SigninBtn onPress={goToScreen}>
           <StyleText style={{ color: "black" }} size={20}>
             Google Sign in
           </StyleText>
