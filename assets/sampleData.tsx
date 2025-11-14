@@ -25,7 +25,7 @@ export const sampleData: ISampleData[] = [...Array(20).keys()].map(() => {
       profileUrl: faker.image.avatarGitHub(),
     },
     title: faker.music.songName(),
-    description: faker.lorem.sentence({ min: 1, max: 3 }),
+    description: faker.lorem.sentence({ min: 3, max: 60 }),
     image: faker.image.urlPicsumPhotos({
       width: 300,
       height: 300 * 1.6,

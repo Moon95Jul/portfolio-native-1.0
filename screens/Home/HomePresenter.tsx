@@ -6,7 +6,9 @@ import VerticalTimeLine from "../../components/VerticalTimeLine";
 import { ISampleData } from "../../assets/sampleData";
 import LoadingScreen from "../Loading/LoadingScreen";
 
-const Container = styled(View)``;
+const Container = styled(View)`
+  background-color: #000;
+`;
 const Title = styled(Text)``;
 
 type Props = {
